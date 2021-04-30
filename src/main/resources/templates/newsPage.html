@@ -32,6 +32,8 @@
                             </li>
                         </ul>
                     </li>
+                    <li><a href = "/changeTemplate">Change template</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -42,7 +44,12 @@
         <div class = "row">
             <div class = "col-md-12">
                 <ul class="list-group">
-                   <div th:replace="listNews.html"></div>
+                    <div th:if="${templateBlock == null}">
+                        <div th:replace="/fragments/listNews.html"></div>
+                    </div>
+                    <div th:if="${templateBlock}">
+                        <div id = "templateFromDateBase" class = "templateFromDateBase"></div>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -100,7 +107,7 @@
                 </div>
                 <div class = "modal-footer">
                     <button type = "submit" id = "addNews" class = "btn btn-primary">Add news</button>
-                    <button type ="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type ="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

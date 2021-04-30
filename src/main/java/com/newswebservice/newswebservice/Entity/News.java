@@ -1,7 +1,5 @@
 package com.newswebservice.newswebservice.Entity;
 
-import org.joda.time.LocalDate;
-
 import javax.persistence.*;
 
 @Entity
@@ -14,11 +12,14 @@ public class News {
     @Column(name = "title")
     private String title;
     @Column(name = "publicationDate")
-    private LocalDate publicationDate;
+    private String publicationDate;
     @Column(name = "bodyNews")
     private String bodyNews;
     @Column(name = "pathToImage")
     private String pathToImage;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "template_id")
+    private Template template;
 
     public Long getId() {
         return Id;
@@ -36,11 +37,11 @@ public class News {
         this.title = title;
     }
 
-    public LocalDate getPublicationDate() {
+    public String getPublicationDate() {
         return publicationDate;
     }
 
-    public void setPublicationDate(LocalDate publicationDate) {
+    public void setPublicationDate(String publicationDate) {
         this.publicationDate = publicationDate;
     }
 
@@ -58,5 +59,13 @@ public class News {
 
     public void setPathToImage(String pathToImage) {
         this.pathToImage = pathToImage;
+    }
+
+    public Template getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(Template template) {
+        this.template = template;
     }
 }

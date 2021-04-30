@@ -1,5 +1,8 @@
 $(document).ready(function(){
-
+    var templateFromDataBase = document.getElementById("templateFromDateBase");
+    if(templateFromDataBase != null) {
+        loadByTemplate();
+    }
     window.addEventListener('load', function() {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
@@ -22,7 +25,6 @@ $(document).ready(function(){
                         contentType: false,
                         success: function(result){
                             $("#arrayNews").html(result);
-                            $("#addNewsForm").get(0).reset();
                             $("#modalAddNews").modal("hide");
                         }
                     })
@@ -35,5 +37,19 @@ $(document).ready(function(){
 
     $("#showModal").click(function(){
         $("#modalAddNews").modal("show");
+        $("#addNewsForm").get(0).reset();
     })
 })
+
+function loadByTemplate(){
+    $.ajax({
+        type: "POST",
+        url: "/getListNews",
+        data: $("#test").serialize(),
+        processData: false,
+        contentType: false,
+        success: function(result){
+            $("#templateFromDateBase").html(result);
+        }
+    })
+}

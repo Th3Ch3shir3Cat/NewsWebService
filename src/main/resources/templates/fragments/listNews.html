@@ -1,14 +1,10 @@
 <div id = "arrayNews">
-  <div th:replace="pagination.html"></div>
+  <div th:replace="fragments/pagination.html"></div>
   <li th:each="news : ${arrayNews}" class="list-group-item">
-    <div class = "imageNews">
-      <img th:src = "${news.pathToImage}" class = "responsiveImage"/>
-    </div>
-    <div class = "newsBody">
       <h3 th:text = "${news.title}">
       </h3>
       <p th:text = "${news.bodyNews}">
       </p>
-    </div>
+      <span class = "data-posted" th:text="${news.publicationDate}"></span>
   </li>
 </div>

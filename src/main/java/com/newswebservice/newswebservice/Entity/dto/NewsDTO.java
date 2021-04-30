@@ -1,7 +1,11 @@
 package com.newswebservice.newswebservice.Entity.dto;
 
+
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * This DTO is used as a layer between the database and the data
+ */
 public class NewsDTO {
 
     private String title;
@@ -40,4 +44,5 @@ public class NewsDTO {
     public void setImages(MultipartFile[] images) {
         this.images = images;
     }
+
 }
