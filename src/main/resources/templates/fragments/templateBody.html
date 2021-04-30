@@ -1,0 +1,1 @@
+<div id = "arrayNews">   <div th:replace="/fragments/pagination.html"></div>   <li th:each="news : ${arrayNews}" class="list-group-item"><span th:text="${news.publicationDate}">Date of publication</span><p th:text="${news.bodyNews}"> Body news</p><h3 th:text="${news.title}"> Title</h3>  </li> </div>
