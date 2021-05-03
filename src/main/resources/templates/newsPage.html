@@ -25,12 +25,8 @@
             </div>
             <div class = "col-xs-10 text-right menu-1" style="padding-left: 15px; padding-right: 15px; width: 84%;">
                 <ul>
-                    <li><a href = "/">News</a>
-                        <ul class = "dropdown">
-                            <li>
-                                <a id = "showModal">Add news</a>
-                            </li>
-                        </ul>
+                    <li>
+                        <a id = "showModal">Add news</a>
                     </li>
                     <li><a href = "/changeTemplate">Change template</a>
                     </li>
@@ -45,9 +41,11 @@
             <div class = "col-md-12">
                 <ul class="list-group">
                     <div th:if="${templateBlock == null}">
+                        <div th:replace="fragments/pagination.html"></div>
                         <div th:replace="/fragments/listNews.html"></div>
                     </div>
                     <div th:if="${templateBlock}">
+                        <div th:replace="fragments/pagination.html"></div>
                         <div id = "templateFromDateBase" class = "templateFromDateBase"></div>
                     </div>
                 </ul>

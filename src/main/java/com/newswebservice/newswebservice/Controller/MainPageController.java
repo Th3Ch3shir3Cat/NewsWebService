@@ -2,6 +2,7 @@ package com.newswebservice.newswebservice.Controller;
 
 import com.newswebservice.newswebservice.Entity.News;
 import com.newswebservice.newswebservice.Entity.dto.NewsDTO;
+import com.newswebservice.newswebservice.Service.GenericTemplateEngine;
 import com.newswebservice.newswebservice.Service.MainPageService;
 import com.newswebservice.newswebservice.Service.TemplateService;
 import org.slf4j.Logger;
@@ -14,8 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.thymeleaf.templatemode.TemplateMode;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class MainPageController {
@@ -80,28 +86,23 @@ public class MainPageController {
 
     /**
      * Controller method for displaying news by generate template
-     * @param model
      * @return
      * @throws IOException
      */
     @RequestMapping(value = "/getListNews", method = RequestMethod.POST)
-    public String getListNews(Model model) throws IOException {
+    public @ResponseBody
+    String getListNews(){
         /**
          * I try to create html model dynamically,
          * but did not find ways to implement it,
          * so I created a template file (templateBody) for templates from the database
          */
-        /*ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("arrayNews", arrayNews);
-        MyPlainHtmlView view = new MyPlainHtmlView(templateService.findOne().getBlock());
-        modelAndView.setView(view);*/
-
-        mainPageService.writeTemplateInFile(templateService.findOne().getBlock());
+        HashMap<String, Object> values = new HashMap<>();
         Page<News> arrayNews = mainPageService.getAllNews(pageable);
-        model.addAttribute("arrayNews", arrayNews);
-        model.addAttribute("arrayNumberNews",ARRAY_NUMBER_NEWS);
-        model.addAttribute("url", "/");
-        return "/fragments/templateBody.html";
+        values.put("arrayNews", arrayNews);
+        GenericTemplateEngine engine = new GenericTemplateEngine(TemplateMode.HTML);
+        String s = engine.getTemplate(templateService.findOne().getBlock(), values);
+        return s;
     }
 
 }

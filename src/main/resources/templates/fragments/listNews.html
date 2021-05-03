@@ -1,5 +1,4 @@
 <div id = "arrayNews">
-  <div th:replace="fragments/pagination.html"></div>
   <li th:each="news : ${arrayNews}" class="list-group-item">
       <h3 th:text = "${news.title}">
       </h3>

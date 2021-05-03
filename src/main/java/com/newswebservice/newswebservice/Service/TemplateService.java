@@ -6,6 +6,10 @@ import com.newswebservice.newswebservice.Repository.TemplateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -36,7 +40,6 @@ public class TemplateService {
             template = new Template();
         }
         template.setBlock("<div id = \"arrayNews\">\n" +
-                "  <div th:replace=\"pagination.html\"></div>\n" +
                 "  <li th:each=\"news : ${arrayNews}\" class=\"list-group-item\">" + templateDTO.getTemplateNews()
         + "  </li>\n" +
                 "</div>");

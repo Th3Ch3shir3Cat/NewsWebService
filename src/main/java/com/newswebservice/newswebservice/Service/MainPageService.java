@@ -74,16 +74,4 @@ public class MainPageService {
         return uploadFilePath;
     }
 
-    /**
-     * Create or update file template
-     * @param bodyTemplate
-     * @throws IOException
-     */
-    public void writeTemplateInFile(String bodyTemplate) throws IOException {
-        File file = new File("src/main/resources/templates/fragments/templateBody.html");
-        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        bw.write(bodyTemplate);
-        bw.close();
-    }
-
 }

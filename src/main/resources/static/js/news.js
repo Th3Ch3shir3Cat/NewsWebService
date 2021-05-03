@@ -38,6 +38,7 @@ $(document).ready(function(){
     $("#showModal").click(function(){
         $("#modalAddNews").modal("show");
         $("#addNewsForm").get(0).reset();
+        $("#addNewsForm").classList.removeAttribute('was-validated');
     })
 })
 
@@ -45,10 +46,8 @@ function loadByTemplate(){
     $.ajax({
         type: "POST",
         url: "/getListNews",
-        data: $("#test").serialize(),
-        processData: false,
-        contentType: false,
         success: function(result){
+            console.log(result);
             $("#templateFromDateBase").html(result);
         }
     })

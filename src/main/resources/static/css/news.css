@@ -25,6 +25,12 @@ a:hover{
     background-color: white;
 }
 
+.navigation ul li > a{
+    padding: 30px 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
 .navigation ul li{
     padding: 0;
     margin: 0;

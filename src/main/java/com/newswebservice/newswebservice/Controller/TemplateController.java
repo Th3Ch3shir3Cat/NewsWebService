@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
+
 @Controller
 public class TemplateController {
 
@@ -31,7 +33,7 @@ public class TemplateController {
      */
     @RequestMapping(value = "/saveTemplate", method = RequestMethod.POST)
     public @ResponseBody
-    void saveTemplate(TemplateDTO templateDTO){
+    void saveTemplate(TemplateDTO templateDTO) throws IOException {
         templateService.saveTemplate(templateDTO);
     }
 
