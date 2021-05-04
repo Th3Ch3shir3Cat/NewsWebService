@@ -92,11 +92,7 @@ public class MainPageController {
     @RequestMapping(value = "/getListNews", method = RequestMethod.POST)
     public @ResponseBody
     String getListNews(){
-        /**
-         * I try to create html model dynamically,
-         * but did not find ways to implement it,
-         * so I created a template file (templateBody) for templates from the database
-         */
+
         HashMap<String, Object> values = new HashMap<>();
         Page<News> arrayNews = mainPageService.getAllNews(pageable);
         values.put("arrayNews", arrayNews);
