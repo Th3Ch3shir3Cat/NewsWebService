@@ -1,10 +1,8 @@
 package com.newswebservice.newswebservice.Service;
 
-import org.antlr.stringtemplate.StringTemplate;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.templatemode.TemplateMode;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.context.Context;
+import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.StringTemplateResolver;
 
 import java.util.Map;
