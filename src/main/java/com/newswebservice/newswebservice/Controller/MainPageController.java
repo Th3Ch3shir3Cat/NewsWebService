@@ -81,7 +81,7 @@ public class MainPageController {
         model.addAttribute("arrayNews",mainPageService.getAllNews(pageable));
         model.addAttribute("arrayNumberNews",ARRAY_NUMBER_NEWS);
         model.addAttribute("url", "/");
-        return "/fragments/listNews.html";
+        return "fragments/listNews.html";
     }
 
     /**
