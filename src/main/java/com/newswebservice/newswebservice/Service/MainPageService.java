@@ -41,7 +41,6 @@ public class MainPageService {
      */
     public News addNews(NewsDTO newsDTO){
         News news = new News();
-        System.out.println("testMain");
         news.setTitle(newsDTO.getTitle());
         news.setBodyNews(newsDTO.getBodyNews());
         news.setPathToImage(newsDTO.getPathToImage());
